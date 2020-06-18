@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./css/PostItem.css">
+    <title>PostItem</title>
+</head>
+<body>
+    <div class="item_container">
+        <div class="item">
+            <div class="item_header flexbox_item">
+                <div id="v_post_no" class="post_no variable_item">No：</div>
+                <div id="v_date" class="date"></div>
+            </div>
+            <div class="flexbox_item">
+                <div>投稿者：</div>
+                <divv id="v_contributor" class="contributor variable_item"></divv>
+            </div>
+            <div class="flexbox_item variable_item">
+                <div >内容　：</div>
+                <div id="v_text" class="text variable_item"></div>
+            </div>
+            <div class="button_area ">
+                <button id="v_edit_btn" class="modal-button" onclick="postEdit(this.id)">編 集</button>
+                <button id="v_delete_btn" onclick="postDelete(this.id)">削 除</button>
+            </div>           
+        </div>
+        <div class="border"></div>
+    </div>
+
+    <!--  モーダルで表示する部分-->
+    <div id="modal" style="display:none;">
+        <div class="modal_window">
+            <div>
+                <label for="edit_contributor_input">投稿者</label>
+                <input type="text" name="contributor_txt" id="edit_contributor_input">
+            </div>
+            <div>
+                <textarea id="edit_contributor_textarea"></textarea>
+            </div>
+            <button onclick="editComplete()">完了</button>
+            <button onclick="editCancel()">キャンセル</button>
+        </div>
+    </div>
+
+    <script>
+        $(".modal-button").modaal({
+          content_source: '#modal',
+          width: 600, height: 250,
+          animation_speed: 300,
+          hide_close: true,
+          overlay_close: false,
+          outer_controls: true
+        });
+      </script>
+</body>
+</html>

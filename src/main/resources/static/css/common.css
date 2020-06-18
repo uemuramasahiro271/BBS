@@ -1,0 +1,14 @@
+button {
+    width: 100px;
+    height: 30px;
+}
+
+.mouseover_style {
+    font-size : 28px;
+    background-color: aqua;
+}
+
+.mouseleave_style {
+    font-size : 14px;
+    background-color: white;
+}

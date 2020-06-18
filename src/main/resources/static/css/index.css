@@ -1,0 +1,21 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+aside {
+    width: 25%;
+    background-color: rgb(249, 231, 216);
+}
+
+#main_container {
+    display: flex;
+    flex: 1;
+}
+
+#main {
+    flex: 1;
+}
+

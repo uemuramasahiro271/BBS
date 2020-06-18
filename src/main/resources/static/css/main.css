@@ -1,0 +1,38 @@
+main {
+    padding-top: 10px;
+}
+
+#form_area {
+    width: 50%;
+    margin: 0px auto;
+}
+
+#form_area .border {
+    margin-top: 15px;
+}
+
+#form_area textarea {
+    width: 350px;
+    height: 100px;
+    margin-top: 7px;
+}
+
+#form_area button {
+    width: 100px;
+    height: 26px;
+}
+
+#contents_area {
+    width: 50%;
+    margin: 0px auto;
+}
+
+.bulletin_board_title {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;
+    margin-bottom: 7px;
+    border-top: solid 1px gray;
+    border-bottom: solid 1px gray;
+    text-align: center;
+}

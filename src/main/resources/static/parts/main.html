@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <title>main</title>
+</head>
+<body>
+    <main>
+        <div class="bulletin_board_title">タイトル</div>
+        <div id="form_area">
+            <div>
+                <label for="contributor_input">投稿者</label>
+                <input type="text" name="contributor_txt" id="contributor_input">
+            </div>
+            <div>
+                <textarea id="contributor_textarea"></textarea>
+            </div>
+            <div>
+                <button id="contributor_btn" onclick="post()">投稿</button>
+            </div>
+            <div class="border"></div>
+        </div>
+        <div id="contents_area"></div>
+    </main>
+</body>
+</html>
