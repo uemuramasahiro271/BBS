@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="./js/modaal.min.js"></script>
     <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/post.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/modaal.min.css">
     <link rel="stylesheet" type="text/css" href="css/common.css">
 
     <title>掲示板アプリ</title>
@@ -12,10 +16,11 @@
     <script type="text/javascript">
         $(function() {
             initView(function() {
-
+                $('#main').load('parts/main.html');
             });
         });
     </script>
+
 </head>
 <body>
     <div id="main_frame"></div>
