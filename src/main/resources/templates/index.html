@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,6 +18,7 @@
     </script>
 </head>
 <body>
+	<h1 th:text="${msg}"></h1>
     <div id="main_frame"></div>
 </body>
 </html>

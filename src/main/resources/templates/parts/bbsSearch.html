@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,5 +9,7 @@
     <div>
         掲示板検索<input type="text"><input type="button" value="検索">
     </div>
+    <h1 th:text="${msg}">aa</h1>
+
 </body>
 </html>
