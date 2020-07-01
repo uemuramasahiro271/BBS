@@ -1,0 +1,13 @@
+ul {
+    list-style: none;
+    padding-left: 0;
+    font-size: 20px;
+}
+
+#search_area {
+    padding: 10px 0;
+}
+
+.area {
+    text-align: center;
+}

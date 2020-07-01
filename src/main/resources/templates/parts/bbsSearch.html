@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/bbsSearch.css">
     <title>Document</title>
 </head>
 <body>
-    <div>
+    <div id="search_area" class="area">
         掲示板検索<input type="text"><input type="button" value="検索">
     </div>
-    <h1 th:text="${msg}">aa</h1>
-
+    <div id="bbs_area" class="area">
+        <ul id="bbs_list"></ul>
+    </div>
 </body>
 </html>
