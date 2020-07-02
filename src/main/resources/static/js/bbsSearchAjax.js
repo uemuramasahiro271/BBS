@@ -24,13 +24,14 @@ function addBbsItem(id, title) {
     	id: "bbs_item" + id,
         text: title,
         href: "javascript:void(0);",
-        onClick: "clickBbsItem(id)"
+        onClick: `clickBbsItem(${id})`
     });
 
     $li.append($a);
     $("#bbs_list").append($li);
 }
 
-function clickBbsItem(a) {
-    console.log("id = " + a);
+function clickBbsItem(id) {
+    //$.post("/postPage", `id=${id}`);
+    location.href = "/postPage";
 }
