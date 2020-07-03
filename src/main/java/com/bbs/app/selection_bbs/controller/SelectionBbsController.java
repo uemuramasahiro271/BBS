@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.bbs.app.postpage.repository.PostPageRepository;
 import com.bbs.app.selection_bbs.entity.BbsEntity;
 import com.bbs.app.selection_bbs.form.BbsForm;
 import com.bbs.app.selection_bbs.service.BbsService;
@@ -21,6 +22,8 @@ public class SelectionBbsController {
 	@Autowired
 	private BbsService bbsService;
 
+	@Autowired PostPageRepository postPageRepository;
+
     @GetMapping("/")
     public ModelAndView index(ModelAndView mv) {
 
@@ -28,7 +31,7 @@ public class SelectionBbsController {
         return mv;
     }
 
-    @GetMapping("/load")
+    @GetMapping("/loadBbs")
     @ResponseBody
     public String load() {
 
@@ -63,6 +66,16 @@ public class SelectionBbsController {
     	mv.setViewName("postPage");
 
     	return mv;
+    }
+
+    @PostMapping("/test")
+    public ModelAndView test() {
+
+    	var test1 = bbsService.findAll();
+
+    	var test2 = postPageRepository.findAll();
+
+    	return new ModelAndView();
     }
 
 }
