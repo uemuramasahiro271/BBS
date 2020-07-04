@@ -7,6 +7,7 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.Table;
 
 import com.bbs.app.selection_bbs.entity.BbsEntity;
@@ -28,6 +29,7 @@ public class ContentEntity implements Serializable {
 	private String text;
 
 	@ManyToOne
-	@JoinColumn(name = "id")
-	private BbsEntity bbs;
+	@JoinColumn(name = "bbs_id", referencedColumnName = "id")
+	@MapsId("bbsId")
+	private BbsEntity bbsEntitiy;
 }

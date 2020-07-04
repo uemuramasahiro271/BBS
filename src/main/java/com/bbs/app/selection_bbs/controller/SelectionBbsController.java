@@ -22,7 +22,8 @@ public class SelectionBbsController {
 	@Autowired
 	private BbsService bbsService;
 
-	@Autowired PostPageRepository postPageRepository;
+	@Autowired
+	private PostPageRepository postPageRepository;
 
     @GetMapping("/")
     public ModelAndView index(ModelAndView mv) {

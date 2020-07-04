@@ -6,10 +6,10 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -33,7 +33,7 @@ public class BbsEntity implements Serializable {
 	@Column(name = "current_no")
 	private int currentNo;
 
-	@OneToMany(mappedBy = "bbs", orphanRemoval = true, cascade = CascadeType.ALL)
-	@JoinColumn(name = "bbsId")
+	@OneToMany(mappedBy = "bbsEntitiy", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	//@JoinColumn(name = "bbs_id", referencedColumnName = "bbs_id", insertable = false, updatable = false)
 	private List<ContentEntity> contents;
 }
