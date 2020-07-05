@@ -6,6 +6,7 @@
     <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="./js/modaal.min.js"></script>
     <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/ajax.js"></script>
     <script type="text/javascript" src="js/postPage.js"></script>
 
     <link rel="stylesheet" type="text/css" href="css/modaal.min.css">
@@ -14,17 +15,20 @@
 
     <title>掲示板アプリ</title>
 
+    <script type="text/javascript" src="js/postPageAjax.js"></script>
+
     <script type="text/javascript">
         $(function() {
             initView(function() {
-                $('#main').load('parts/main.html');
+                $('#main').load('parts/main.html', function() {
+                    loadPostPage();
+                });
             });
         });
     </script>
 
 </head>
 <body>
-    <script type="text/javascript" src="js/postPageAjax.js"></script>
     <div id="main_frame"></div>
 </body>
 </html>

@@ -14,15 +14,14 @@
     <script type="text/javascript">
         $(function() {
             initView(function() {
-                $('#main').load('parts/bbsSearch.html');
+                $('#main').load('parts/bbsSearch.html', function() {
+                    loadBbs();
+                });
             });
         });
     </script>
 </head>
 <body>
-	<form th:action="@{/test}" method="POST">
-		<input type="submit" value="テスト">
-	</form>
     <div id="main_frame"></div>
 </body>
 </html>

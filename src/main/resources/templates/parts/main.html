@@ -23,6 +23,21 @@
             <div class="border"></div>
         </div>
         <div id="contents_area"></div>
+        
+        <!--  モーダルで表示する部分-->
+        <div id="modal" style="display:none;">
+            <div class="modal_window">
+                <div>
+                    <label for="edit_contributor_input">投稿者</label>
+                    <input type="text" name="contributor_txt" id="edit_contributor_input">
+                </div>
+                <div>
+                    <textarea id="edit_contributor_textarea"></textarea>
+                </div>
+                <button onclick="editComplete()">完了</button>
+                <button onclick="editCancel()">キャンセル</button>
+            </div>
+        </div>
     </main>
 </body>
 </html>

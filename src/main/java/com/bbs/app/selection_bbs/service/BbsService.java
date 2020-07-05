@@ -1,10 +1,13 @@
 package com.bbs.app.selection_bbs.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bbs.app.postpage.entity.ContentEntity;
 import com.bbs.app.selection_bbs.entity.BbsEntity;
 import com.bbs.app.selection_bbs.repository.BbsRepository;
 
@@ -17,5 +20,22 @@ public class BbsService {
 
 	public List<BbsEntity> findAll() {
 		return bbsRepository.findAll();
+	}
+
+	public Optional<BbsEntity> findById(int id) {
+		return bbsRepository.findById(id);
+	}
+
+	public List<ContentEntity> getContents(int id) {
+
+		return findById(id)
+				.map(entity -> entity.getContents())
+				.orElseGet(() -> { return new ArrayList<ContentEntity>(); });
+	}
+
+	public int getCurrentNo(int id) {
+		return findById(id)
+				.map(entity -> entity.getCurrentNo())
+				.orElseGet(() -> 1);
 	}
 }

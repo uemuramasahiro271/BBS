@@ -30,6 +30,10 @@
     border: solid 1px gray;
 }
 
+.editBtn {
+    height: 24px;
+}
+
 .modal_window {
     width: 60%;
     margin: 0px auto;

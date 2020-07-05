@@ -5,12 +5,9 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.bbs.app.postpage.repository.PostPageRepository;
 import com.bbs.app.selection_bbs.entity.BbsEntity;
 import com.bbs.app.selection_bbs.form.BbsForm;
 import com.bbs.app.selection_bbs.service.BbsService;
@@ -21,9 +18,6 @@ public class SelectionBbsController {
 
 	@Autowired
 	private BbsService bbsService;
-
-	@Autowired
-	private PostPageRepository postPageRepository;
 
     @GetMapping("/")
     public ModelAndView index(ModelAndView mv) {
@@ -51,15 +45,6 @@ public class SelectionBbsController {
 	    return json;
     }
 
-    @PostMapping("/postPage")
-    public ModelAndView transitionPostPage(@RequestParam(name="id") String id) {
-
-    	var mv = new ModelAndView();
-    	mv.setViewName("postPage");
-
-    	return mv;
-    }
-
     @GetMapping("/postPage")
     public ModelAndView postPage() {
 
@@ -68,15 +53,4 @@ public class SelectionBbsController {
 
     	return mv;
     }
-
-    @PostMapping("/test")
-    public ModelAndView test() {
-
-    	var test1 = bbsService.findAll();
-
-    	var test2 = postPageRepository.findAll();
-
-    	return new ModelAndView();
-    }
-
 }

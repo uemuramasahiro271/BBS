@@ -34,6 +34,5 @@ public class BbsEntity implements Serializable {
 	private int currentNo;
 
 	@OneToMany(mappedBy = "bbsEntitiy", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	//@JoinColumn(name = "bbs_id", referencedColumnName = "bbs_id", insertable = false, updatable = false)
 	private List<ContentEntity> contents;
 }

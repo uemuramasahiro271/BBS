@@ -1,8 +1,8 @@
-window.onload = function() {
-    load();
-}
+// window.onload = function() {
+//     loadBbs();
+// }
 
-function load() {
+function loadBbs() {
     ajaxGet("/loadBbs", function(data) { loadSuccess(data); });
 }
 

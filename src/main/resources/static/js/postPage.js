@@ -3,42 +3,54 @@ var editId;
 
 class PostItemCreator {
 
-    constructor(contributor, text) {
+    constructor(no, contributor, date, text) {
+        this.no = no;
         this.contributor = contributor;
+        this.date = date;
         this.text = text;
     }
 
     create() {
-        var count = `${postCount}`;
-        var id = `content_${postCount}`;
-        var date = new Date();
+        var no = this.no;
+        var id = `content_${no}`;
+        var date = this.date;
         var contributor = this.contributor;
         var text = this.text;
         $("#contents_area").append(`<article id="${id}"></article>`);
-        $(`#${id}`).load("./parts/postItem.html", function() {
+        console.log("create");
+        $(`#${id}`).load("parts/postItem.html", function() {
+            console.log("postItem load");
             // 各IDを設定
-            $('#v_post_no').attr('id', `post_no${count}`);
-            $('#v_date').attr('id', `data${count}`);
-            $('#v_contributor').attr('id', `contributor${count}`);
-            $('#v_text').attr('id', `text${count}`);
-            $('#v_edit_btn').attr('id', `edit_btn${count}`);
-            $('#v_delete_btn').attr('id', `delete_btn${count}`);
+            $('#v_post_no').attr('id', `post_no${no}`);
+            $('#v_date').attr('id', `data${no}`);
+            $('#v_contributor').attr('id', `contributor${no}`);
+            $('#v_text').attr('id', `text${no}`);
+            $('#v_edit_btn').attr('id', `edit_btn${no}`);
+            $('#v_delete_btn').attr('id', `delete_btn${no}`);
 
             // 投稿内容設定
-            $(`#post_no${count}`).text(`No：${count}`);
-            $(`#data${count}`).text(date.toLocaleString("ja"));
-            $(`#contributor${count}`).text(`${contributor}`);
-            $(`#text${count}`).text(`${text}`);
+            $(`#post_no${no}`).text(`No：${no}`);
+            $(`#data${no}`).text(date);
+            $(`#contributor${no}`).text(`${contributor}`);
+            $(`#text${no}`).text(`${text}`);
         });
     }
 }
 
+function addPostItem(no, contributor, date, text) {
+    console.log("addPostItem");
+    var creator = new PostItemCreator(no, contributor, date, text);
+    creator.create();
+}
+
 function post() {
 
+    var no = `${postCount}`;
     var contributor = $("#contributor_input").val();
+    var date = new Date().toLocaleString("ja");
     var text = $("#contributor_textarea").val();
 
-    var creator = new PostItemCreator(contributor, text);
+    var creator = new PostItemCreator(no, contributor, date, text);
     creator.create();
 
     $("#contributor_input").val("");

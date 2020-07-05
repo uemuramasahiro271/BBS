@@ -1,6 +1,7 @@
 package com.bbs.app.postpage.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
@@ -24,6 +25,9 @@ public class ContentEntity implements Serializable {
 
 	@Column(name = "contributor")
 	private String contributor;
+
+	@Column(name = "date")
+	private Date date;
 
 	@Column(name = "text")
 	private String text;
