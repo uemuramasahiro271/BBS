@@ -54,7 +54,7 @@ public class PostPageController {
 
 		var form = JsonUtil.parse(ContentForm.class, json);
 		var currentNo = bbsService.getCurrentNo(form.getBbsId());
-		var no = currentNo++;
+		var no = ++currentNo;
 
 		var entity = new ContentEntity();
 		try {

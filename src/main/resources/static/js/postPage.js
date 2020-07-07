@@ -45,17 +45,16 @@ function addPostItem(no, contributor, date, text) {
 
 function post() {
 
-    var no = `${postCount}`;
     var contributor = $("#contributor_input").val();
     var date = new Date().toLocaleString("ja");
     var text = $("#contributor_textarea").val();
 
-    var creator = new PostItemCreator(no, contributor, date, text);
-    creator.create();
+    // var creator = new PostItemCreator(no, contributor, date, text);
+    // creator.create();
+    addItem(contributor, date, text);
 
     $("#contributor_input").val("");
     $("#contributor_textarea").val("");
-    postCount++;
 }
 
 function postEdit(id) {

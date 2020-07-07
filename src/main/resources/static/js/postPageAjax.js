@@ -1,10 +1,3 @@
-// window.onload = function() {
-//     var id = window.sessionStorage.getItem(['bbs_id']);
-//     console.log("window.onload");
-//     console.log(id);
-//     loadPostPage(id);
-// }
-
 function loadPostPage() {
     console.log("loadPostPage");
     var id = window.sessionStorage.getItem(['bbs_id']);
@@ -22,4 +15,54 @@ function loadSuccess(dataArray) {
         console.log(data);
         addPostItem(data.no, data.contributor, data.date, data.text);
     }
+}
+
+function addItem(contributor, date, text) {
+    var id = window.sessionStorage.getItem(['bbs_id']);
+    var data = {
+        id:id,
+        contributor:contributor,
+        date:date,
+        text:text
+    };
+    let json = JSON.stringify(data);
+    console.log("addItem : " + json);
+    ajaxPost("/addPostItem", json, function(data) { addItemSuccess(data); });
+}
+
+function addItemSuccess(data) {
+    console.log(data);
+    addPostItem(data.no, data.contributor, data.date, data.text);
+}
+
+function deleteItem(no) {
+    var id = window.sessionStorage.getItem(['bbs_id']);
+    var data = {
+        id:id,
+        no:no
+    };
+    let json = JSON.stringify(data);
+    console.log("deleteItem : " + json);
+    ajaxPost("/deletePostItem", json, function(data) { addItemSuccess(data); });
+}
+
+function deleteItemSuccess(data) {
+    console.log(data);
+}
+
+function editItem() {
+    var id = window.sessionStorage.getItem(['bbs_id']);
+    var data = {
+        id:id,
+        contributor:contributor,
+        date:date,
+        text:text
+    };
+    let json = JSON.stringify(data);
+    console.log("editItem : " + json);
+    ajaxPost("/editPostItem", json, function(data) { editItemSuccess(data); });
+}
+
+function editItemSuccess(data) {
+    console.log(data);
 }
