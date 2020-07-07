@@ -33,6 +33,6 @@ public class BbsEntity implements Serializable {
 	@Column(name = "current_no")
 	private int currentNo;
 
-	@OneToMany(mappedBy = "bbsEntitiy", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "bbsEntity", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<ContentEntity> contents;
 }

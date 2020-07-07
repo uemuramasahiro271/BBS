@@ -53,22 +53,29 @@ public class PostPageController {
 	public String addPostItem(@RequestBody String json) {
 
 		var form = JsonUtil.parse(ContentForm.class, json);
-		var currentNo = bbsService.getCurrentNo(form.getBbsId());
+
+		var id = form.getBbsId();
+		var bbsEntity = bbsService.findById(id).get();
+		var currentNo = bbsEntity.getCurrentNo();
 		var no = ++currentNo;
 
 		var entity = new ContentEntity();
 		try {
-			entity.setContentPk(new ContentPk(form.getBbsId(), no));
+			entity.setContentPk(new ContentPk(id, no));
 			entity.setContributor(form.getContributor());
 			entity.setDate(dateFormat.parse(form.getDate()));
 			entity.setText(form.getText());
+			entity.setBbsEntity(bbsEntity);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 
 		postPageService.add(entity);
+		bbsEntity.setCurrentNo(no);
+		bbsService.update(bbsEntity);
 
-	    String resultJson = JsonUtil.convert(entity);
+		form.setNo(no);
+	    String resultJson = JsonUtil.convert(form);
 		System.out.println(resultJson);
 
 		return resultJson;

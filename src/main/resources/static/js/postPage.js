@@ -49,8 +49,6 @@ function post() {
     var date = new Date().toLocaleString("ja");
     var text = $("#contributor_textarea").val();
 
-    // var creator = new PostItemCreator(no, contributor, date, text);
-    // creator.create();
     addItem(contributor, date, text);
 
     $("#contributor_input").val("");

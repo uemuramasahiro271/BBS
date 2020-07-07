@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.bbs.app.selection_bbs.entity.BbsEntity;
 
@@ -26,14 +28,15 @@ public class ContentEntity implements Serializable {
 	@Column(name = "contributor")
 	private String contributor;
 
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "date")
 	private Date date;
 
 	@Column(name = "text")
 	private String text;
 
-	@ManyToOne
+	@ManyToOne(optional = true)
 	@JoinColumn(name = "bbs_id", referencedColumnName = "id")
 	@MapsId("bbsId")
-	private BbsEntity bbsEntitiy;
+	private BbsEntity bbsEntity;
 }

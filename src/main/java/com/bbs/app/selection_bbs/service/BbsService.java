@@ -38,4 +38,14 @@ public class BbsService {
 				.map(entity -> entity.getCurrentNo())
 				.orElseGet(() -> 1);
 	}
+
+	public void update(BbsEntity entity) {
+		bbsRepository.save(entity);
+	}
+
+	public void updateCurrentNo(int id, int no) {
+		var entity = findById(id).get();
+		entity.setCurrentNo(no);
+		bbsRepository.save(entity);
+	}
 }

@@ -14,7 +14,7 @@ public class PostPageService {
 	private PostPageRepository postPageRepository;
 
 	public void add(ContentEntity entity) {
-		postPageRepository.save(entity);
+		postPageRepository.saveAndFlush(entity);
 	}
 
 	public void delete(int id, int no) {
@@ -22,7 +22,7 @@ public class PostPageService {
 	}
 
 	public void update(ContentEntity entity) {
-
+		postPageRepository.save(entity);
 	}
 
 }
