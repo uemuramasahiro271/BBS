@@ -21,6 +21,7 @@ class PostItemCreator {
         $(`#${id}`).load("parts/postItem.html", function() {
             console.log("postItem load");
             // 各IDを設定
+            $('#v_item').attr('id', `item${no}`)
             $('#v_post_no').attr('id', `post_no${no}`);
             $('#v_date').attr('id', `data${no}`);
             $('#v_contributor').attr('id', `contributor${no}`);
@@ -65,19 +66,37 @@ function postEdit(id) {
 }
 
 function editComplete() {
+    var no = $(`#${editId}`).find('.post_no').text().replace("No：", "");
     var contributor = $("#edit_contributor_input").val();
+    var date = $(`#${editId}`).find(`#data${no}`).text();
     var text = $("#edit_contributor_textarea").val();
 
-    $(`#${editId}`).find(".contributor").text(contributor);
-    $(`#${editId}`).find(".text").text(text);
-
-    $(".modal-button").modaal('close');
+    editItem(no, contributor, date, text);
+    closeModal();
 }
 
 function editCancel() {
+    closeModal();
+}
+
+function editPostItem(contributor, text) {
+    $(`#${editId}`).find(".contributor").text(contributor);
+    $(`#${editId}`).find(".text").text(text);
+}
+
+function closeModal() {
     $(".modal-button").modaal('close');
+    editId = "";
 }
 
 function postDelete(id) {
-    $(`#${id}`).parents('.item_container').parent().remove();
+    var $itemContainer = $(`#${id}`).parents('.item_container');
+    var no = $itemContainer.find('.post_no').text().replace("No：", "");
+    console.log("postDelete : no = " + no);
+
+    deleteItem(no);
+}
+
+function deletePostItem(no) {
+    $(`#item${no}`).parent().remove();
 }

@@ -43,17 +43,19 @@ function deleteItem(no) {
     };
     let json = JSON.stringify(data);
     console.log("deleteItem : " + json);
-    ajaxPost("/deletePostItem", json, function(data) { addItemSuccess(data); });
+    ajaxPost("/deletePostItem", json, function(data) { deleteItemSuccess(data); });
 }
 
 function deleteItemSuccess(data) {
     console.log(data);
+    deletePostItem(data.no);
 }
 
-function editItem() {
+function editItem(no, contributor, date, text) {
     var id = window.sessionStorage.getItem(['bbs_id']);
     var data = {
         id:id,
+        no:no,
         contributor:contributor,
         date:date,
         text:text
@@ -65,4 +67,5 @@ function editItem() {
 
 function editItemSuccess(data) {
     console.log(data);
+    editPostItem(data.contributor, data.text);
 }
