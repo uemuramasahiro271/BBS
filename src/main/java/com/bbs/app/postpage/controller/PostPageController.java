@@ -95,4 +95,32 @@ public class PostPageController {
 		return resultJson;
 	}
 
+	@PostMapping("/editPostItem")
+	@ResponseBody
+	public String editPostItem(@RequestBody String json) {
+
+		var form = JsonUtil.parse(ContentForm.class, json);
+		var id = form.getBbsId();
+		var bbsEntity = bbsService.findById(id).get();
+		var no = form.getNo();
+
+		var entity = new ContentEntity();
+		try {
+			entity.setContentPk(new ContentPk(id, no));
+			entity.setContributor(form.getContributor());
+			entity.setDate(dateFormat.parse(form.getDate()));
+			entity.setText(form.getText());
+			entity.setBbsEntity(bbsEntity);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		postPageService.update(entity);
+
+	    String resultJson = JsonUtil.convert(form);
+		System.out.println(resultJson);
+
+		return resultJson;
+	}
+
 }

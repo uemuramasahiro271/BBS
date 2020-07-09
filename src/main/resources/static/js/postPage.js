@@ -50,7 +50,10 @@ function post() {
     var date = new Date().toLocaleString("ja");
     var text = $("#contributor_textarea").val();
 
-    addItem(contributor, date, text);
+    addItem(contributor, date, text, function(data){
+        console.log(data);
+        addPostItem(data.no, data.contributor, data.date, data.text);
+    });
 
     $("#contributor_input").val("");
     $("#contributor_textarea").val("");
@@ -71,8 +74,11 @@ function editComplete() {
     var date = $(`#${editId}`).find(`#data${no}`).text();
     var text = $("#edit_contributor_textarea").val();
 
-    editItem(no, contributor, date, text);
-    closeModal();
+    editItem(no, contributor, date, text, function(data) {
+        console.log(data);
+        editPostItem(data.contributor, data.text);
+        closeModal();
+    });
 }
 
 function editCancel() {
@@ -80,11 +86,15 @@ function editCancel() {
 }
 
 function editPostItem(contributor, text) {
+    console.log("editPostItem : contributor = " + contributor);
+    console.log("editPostItem : text = " + text);
+    console.log("editPostItem : editId = " + editId);
     $(`#${editId}`).find(".contributor").text(contributor);
     $(`#${editId}`).find(".text").text(text);
 }
 
 function closeModal() {
+    console.log("closeModal()");
     $(".modal-button").modaal('close');
     editId = "";
 }
@@ -94,7 +104,10 @@ function postDelete(id) {
     var no = $itemContainer.find('.post_no').text().replace("No：", "");
     console.log("postDelete : no = " + no);
 
-    deleteItem(no);
+    deleteItem(no, function(data) {
+        console.log(data);
+        deletePostItem(data.no);
+    });
 }
 
 function deletePostItem(no) {

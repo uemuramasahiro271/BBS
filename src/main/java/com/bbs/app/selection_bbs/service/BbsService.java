@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.bbs.app.postpage.entity.ContentEntity;
 import com.bbs.app.selection_bbs.entity.BbsEntity;
@@ -39,10 +40,12 @@ public class BbsService {
 				.orElseGet(() -> 1);
 	}
 
+	@Transactional
 	public void update(BbsEntity entity) {
 		bbsRepository.save(entity);
 	}
 
+	@Transactional
 	public void updateCurrentNo(int id, int no) {
 		var entity = findById(id).get();
 		entity.setCurrentNo(no);

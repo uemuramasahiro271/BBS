@@ -17,7 +17,7 @@ function loadSuccess(dataArray) {
     }
 }
 
-function addItem(contributor, date, text) {
+function addItem(contributor, date, text, addItemSuccess) {
     var id = window.sessionStorage.getItem(['bbs_id']);
     var data = {
         id:id,
@@ -30,12 +30,7 @@ function addItem(contributor, date, text) {
     ajaxPost("/addPostItem", json, function(data) { addItemSuccess(data); });
 }
 
-function addItemSuccess(data) {
-    console.log(data);
-    addPostItem(data.no, data.contributor, data.date, data.text);
-}
-
-function deleteItem(no) {
+function deleteItem(no, deleteItemSuccess) {
     var id = window.sessionStorage.getItem(['bbs_id']);
     var data = {
         id:id,
@@ -46,12 +41,7 @@ function deleteItem(no) {
     ajaxPost("/deletePostItem", json, function(data) { deleteItemSuccess(data); });
 }
 
-function deleteItemSuccess(data) {
-    console.log(data);
-    deletePostItem(data.no);
-}
-
-function editItem(no, contributor, date, text) {
+function editItem(no, contributor, date, text, editItemSuccess) {
     var id = window.sessionStorage.getItem(['bbs_id']);
     var data = {
         id:id,
@@ -63,9 +53,4 @@ function editItem(no, contributor, date, text) {
     let json = JSON.stringify(data);
     console.log("editItem : " + json);
     ajaxPost("/editPostItem", json, function(data) { editItemSuccess(data); });
-}
-
-function editItemSuccess(data) {
-    console.log(data);
-    editPostItem(data.contributor, data.text);
 }

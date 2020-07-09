@@ -1,6 +1,3 @@
-// window.onload = function() {
-//     loadBbs();
-// }
 
 function loadBbs() {
     ajaxGet("/loadBbs", function(data) { loadSuccess(data); });
@@ -32,7 +29,6 @@ function addBbsItem(id, title) {
 }
 
 function clickBbsItem(id) {
-    //$.post("/postPage", `id=${id}`);
 	window.sessionStorage.setItem(['bbs_id'],[id]);
     location.href = "/postPage";
 }
