@@ -19,14 +19,17 @@ public class BbsService {
 	@Autowired
 	private BbsRepository bbsRepository;
 
+	@Transactional
 	public List<BbsEntity> findAll() {
 		return bbsRepository.findAll();
 	}
 
+	@Transactional
 	public Optional<BbsEntity> findById(int id) {
 		return bbsRepository.findById(id);
 	}
 
+	@Transactional
 	public List<ContentEntity> getContents(int id) {
 
 		return findById(id)
@@ -34,6 +37,7 @@ public class BbsService {
 				.orElseGet(() -> { return new ArrayList<ContentEntity>(); });
 	}
 
+	@Transactional
 	public int getCurrentNo(int id) {
 		return findById(id)
 				.map(entity -> entity.getCurrentNo())
