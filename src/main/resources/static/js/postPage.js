@@ -1,5 +1,6 @@
 var postCount = 1;
 var editId;
+var deleteId;
 
 class PostItemCreator {
 
@@ -49,6 +50,15 @@ function post() {
     var date = new Date().toLocaleString("ja");
     var text = $("#contributor_textarea").val();
 
+    if(text === "") {
+        alert("投稿内容を入力してください。");
+        return;
+    }
+
+    if(contributor === "") {
+        contributor = "匿名";
+    }
+
     addItem(contributor, date, text, function(data){
         console.log(data);
         addPostItem(data.no, data.contributor, data.date, data.text);
@@ -76,12 +86,13 @@ function editComplete() {
     editItem(no, contributor, date, text, function(data) {
         console.log(data);
         editPostItem(data.contributor, data.text);
-        closeModal();
+        closeEditModal();
     });
 }
 
-function editCancel() {
-    closeModal();
+function closeEditModal() {
+    closeModal(".modal_edit_button");
+    editId = "";
 }
 
 function editPostItem(contributor, text) {
@@ -92,13 +103,17 @@ function editPostItem(contributor, text) {
     $(`#${editId}`).find(".text").text(text);
 }
 
-function closeModal() {
+function closeModal(className) {
     console.log("closeModal()");
-    $(".modal_edit_button").modaal('close');
-    editId = "";
+    $(className).modaal('close');
 }
 
 function postDelete(id) {
+    deleteId = id;
+}
+
+function deleteComplete() {
+    var id = deleteId;
     var $itemContainer = $(`#${id}`).parents('.item_container');
     var no = $itemContainer.find('.post_no').text().replace("No：", "");
     console.log("postDelete : no = " + no);
@@ -106,7 +121,13 @@ function postDelete(id) {
     deleteItem(no, function(data) {
         console.log(data);
         deletePostItem(data.no);
+        closeDeleteModal();
     });
+}
+
+function closeDeleteModal() {
+    closeModal(".modal_delete_button");
+    deleteId = "";
 }
 
 function deletePostItem(no) {

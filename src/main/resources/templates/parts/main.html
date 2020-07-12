@@ -15,7 +15,7 @@
                 <input type="text" name="contributor_txt" id="contributor_input" maxlength="15">
             </div>
             <div>
-                <textarea id="contributor_textarea"></textarea>
+                <textarea id="contributor_textarea" maxlength="150"></textarea>
             </div>
             <div>
                 <button id="contributor_btn" onclick="post()">投稿</button>
@@ -28,14 +28,24 @@
         <div id="modal_edit" style="display:none;">
             <div class="modal_window">
                 <div>
-                    <label for="edit_contributor_input">投稿者</label>
-                    <input type="text" name="contributor_txt" id="edit_contributor_input">
+                    <div>
+                        <label for="edit_contributor_input">投稿者</label>
+                        <input type="text" name="contributor_txt" id="edit_contributor_input">
+                    </div>
+                    <div>
+                        <textarea id="edit_contributor_textarea"></textarea>
+                    </div>
+                    <button onclick="editComplete()">完了</button>
+                    <button onclick="closeEditModal()">キャンセル</button>
                 </div>
-                <div>
-                    <textarea id="edit_contributor_textarea"></textarea>
-                </div>
-                <button onclick="editComplete()">完了</button>
-                <button onclick="editCancel()">キャンセル</button>
+            </div>
+        </div>
+
+        <div id="modal_delete" style="display:none;">
+            <div class="modal_window modal_confirm">
+                <h2>本当に削除しますか?</h2>
+                <button onclick="deleteComplete()">はい</button>
+                <button onclick="closeDeleteModal()">いいえ</button>
             </div>
         </div>
     </main>

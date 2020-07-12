@@ -27,6 +27,10 @@ main {
     margin: 0px auto;
 }
 
+#contributor_input {
+    width: 250px;
+}
+
 .bulletin_board_title {
     font-size: 20px;
     font-weight: bold;
@@ -35,4 +39,19 @@ main {
     border-top: solid 1px gray;
     border-bottom: solid 1px gray;
     text-align: center;
+}
+
+.modal_window {
+    width: 60%;
+    margin: 0px auto;
+}
+
+.modal_confirm {
+    text-align: center;
+}
+
+.modal_window textarea {
+    width: 350px;
+    height: 100px;
+    margin-top: 7px;
 }
