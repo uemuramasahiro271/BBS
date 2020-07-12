@@ -1,7 +1,6 @@
 .item {
     display: flex;
     flex-direction: column;
-    height: 150px;
     padding: 5px;
     background-color: whitesmoke;
 }
@@ -22,8 +21,6 @@
 .text {
     margin: 0;
     word-break: break-all;
-    overflow-y: scroll;
-    height: 70px;
 }
 
 .border {

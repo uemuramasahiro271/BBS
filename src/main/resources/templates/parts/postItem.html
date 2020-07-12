@@ -15,23 +15,32 @@
             </div>
             <div class="flexbox_item">
                 <div>投稿者：</div>
-                <divv id="v_contributor" class="contributor variable_item"></divv>
+                <div id="v_contributor" class="contributor variable_item"></div>
             </div>
             <div class="flexbox_item variable_item">
                 <div >内容　：</div>
                 <div id="v_text" class="text variable_item"></div>
             </div>
             <div class="button_area">
-                <button id="v_edit_btn" class="modal-button editBtn" onclick="postEdit(this.id)">編 集</button>
-                <button id="v_delete_btn" class="editBtn" onclick="postDelete(this.id)">削 除</button>
+                <button id="v_edit_btn" class="modal_edit_button editBtn" onclick="postEdit(this.id)">編 集</button>
+                <button id="v_delete_btn" class="modal_delete_button editBtn" onclick="postDelete(this.id)">削 除</button>
             </div>           
         </div>
         <div class="border"></div>
     </div>
 
     <script>
-        $(".modal-button").modaal({
-            content_source: '#modal',
+        $(".modal_edit_button").modaal({
+            content_source: '#modal_edit',
+            width: 600, height: 250,
+            animation_speed: 300,
+            hide_close: true,
+            overlay_close: false,
+            outer_controls: true
+        });
+
+        $(".modal_delete_button").modaal({
+            content_source: '#modal_edit',
             width: 600, height: 250,
             animation_speed: 300,
             hide_close: true,

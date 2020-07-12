@@ -45,7 +45,6 @@ function addPostItem(no, contributor, date, text) {
 }
 
 function post() {
-
     var contributor = $("#contributor_input").val();
     var date = new Date().toLocaleString("ja");
     var text = $("#contributor_textarea").val();
@@ -95,7 +94,7 @@ function editPostItem(contributor, text) {
 
 function closeModal() {
     console.log("closeModal()");
-    $(".modal-button").modaal('close');
+    $(".modal_edit_button").modaal('close');
     editId = "";
 }
 
