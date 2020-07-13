@@ -1,5 +1,8 @@
 function loadPostPage() {
     console.log("loadPostPage");
+    var title = window.sessionStorage.getItem(['bbs_title']);
+    setTitle(title);
+    
     var id = window.sessionStorage.getItem(['bbs_id']);
     var data = {id:id};
     let json = JSON.stringify(data);
@@ -15,6 +18,10 @@ function loadSuccess(dataArray) {
         console.log(data);
         addPostItem(data.no, data.contributor, data.date, data.text);
     }
+}
+
+function setTitle(title) {
+    $("#bbs_title").text(title);
 }
 
 function addItem(contributor, date, text, addItemSuccess) {

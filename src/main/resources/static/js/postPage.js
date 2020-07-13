@@ -118,10 +118,11 @@ function deleteComplete() {
     var no = $itemContainer.find('.post_no').text().replace("No：", "");
     console.log("postDelete : no = " + no);
 
+    closeDeleteModal();
+
     deleteItem(no, function(data) {
         console.log(data);
         deletePostItem(data.no);
-        closeDeleteModal();
     });
 }
 

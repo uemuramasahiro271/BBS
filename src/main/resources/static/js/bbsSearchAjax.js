@@ -21,14 +21,17 @@ function addBbsItem(id, title) {
     	id: "bbs_item" + id,
         text: title,
         href: "javascript:void(0);",
-        onClick: `clickBbsItem(${id})`
+        onClick: `clickBbsItem(${id}, '${title}')`
     });
 
     $li.append($a);
     $("#bbs_list").append($li);
 }
 
-function clickBbsItem(id) {
-	window.sessionStorage.setItem(['bbs_id'],[id]);
+function clickBbsItem(id, title) {
+    console.log(`clickBbsItem`);
+    console.log(`title = ${title}`);
+    window.sessionStorage.setItem(['bbs_id'],[id]);
+    window.sessionStorage.setItem(['bbs_title'],[title]);
     location.href = "/postPage";
 }
