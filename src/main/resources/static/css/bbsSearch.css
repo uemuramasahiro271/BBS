@@ -4,6 +4,14 @@ ul {
     font-size: 20px;
 }
 
+#input_text {
+    margin-left: 5px;
+}
+
+#search_btn {
+    margin-left: 5px;
+}
+
 #search_area {
     padding: 10px 0;
 }

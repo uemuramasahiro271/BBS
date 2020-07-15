@@ -28,6 +28,11 @@ function addBbsItem(id, title) {
     $("#bbs_list").append($li);
 }
 
+function clickSearchBtn() {
+    console.log(`clickSearchBtn`);
+    console.log($("#input_text").val());
+}
+
 function clickBbsItem(id, title) {
     console.log(`clickBbsItem`);
     console.log(`title = ${title}`);
