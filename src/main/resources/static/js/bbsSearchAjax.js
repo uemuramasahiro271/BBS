@@ -1,10 +1,10 @@
 
 function loadBbs() {
-    ajaxGet("/loadBbs", function(data) { loadSuccess(data); });
+    ajaxGet("/loadBbs", function(data) { createBbsList(data); });
 }
 
-function loadSuccess(dataArray) {
-    console.log("loadSuccess");
+function createBbsList(dataArray) {
+    console.log("createBbsList");
 
     for (let index = 0; index < dataArray.length; index++) {
         const data = dataArray[index];
@@ -30,7 +30,10 @@ function addBbsItem(id, title) {
 
 function clickSearchBtn() {
     console.log(`clickSearchBtn`);
-    console.log($("#input_text").val());
+    var titleCondition = $("#input_text").val();
+    var data = {titleCondition:titleCondition};
+    let json = JSON.stringify(data);
+    ajaxPost("/searchBbs", json, function(data) { createBbsList(data); });
 }
 
 function clickBbsItem(id, title) {

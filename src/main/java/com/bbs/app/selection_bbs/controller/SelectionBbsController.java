@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.bbs.app.selection_bbs.entity.BbsEntity;
 import com.bbs.app.selection_bbs.form.BbsForm;
+import com.bbs.app.selection_bbs.form.BbsSearchConditionForm;
 import com.bbs.app.selection_bbs.service.BbsService;
 import com.bbs.common.JsonUtil;
 
@@ -51,6 +52,7 @@ public class SelectionBbsController {
     @ResponseBody
     public String searchBbs(@RequestBody String json) {
 
+    	var form = JsonUtil.parse(BbsSearchConditionForm.class, json);
 
 
     	return "";

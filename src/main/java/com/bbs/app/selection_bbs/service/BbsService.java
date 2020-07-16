@@ -25,6 +25,11 @@ public class BbsService {
 	}
 
 	@Transactional
+	public List<BbsEntity> findBbs(String titleCondition) {
+		return bbsRepository.findBbs(titleCondition);
+	}
+
+	@Transactional
 	public Optional<BbsEntity> findById(int id) {
 		return bbsRepository.findById(id);
 	}
