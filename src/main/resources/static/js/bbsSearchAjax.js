@@ -13,6 +13,10 @@ function createBbsList(dataArray) {
     }
 }
 
+function clearBbsList() {
+    $("#bbs_list").empty();
+}
+
 function addBbsItem(id, title) {
     var $li = $("<li></li>", {
 
@@ -33,7 +37,10 @@ function clickSearchBtn() {
     var titleCondition = $("#input_text").val();
     var data = {titleCondition:titleCondition};
     let json = JSON.stringify(data);
-    ajaxPost("/searchBbs", json, function(data) { createBbsList(data); });
+    ajaxPost("/searchBbs", json, function(data) { 
+        clearBbsList();
+        createBbsList(data); 
+    });
 }
 
 function clickBbsItem(id, title) {

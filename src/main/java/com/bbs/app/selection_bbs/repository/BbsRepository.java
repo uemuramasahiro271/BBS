@@ -12,7 +12,7 @@ import com.bbs.app.selection_bbs.entity.BbsEntity;
 @Repository
 public interface BbsRepository extends JpaRepository<BbsEntity, Integer> {
 
-	@Query("select b from bbs b where b.title like %:titleCondition%")
+	@Query("SELECT b FROM BbsEntity b WHERE b.title LIKE %:titleCondition%")
 	List<BbsEntity> findBbs(@Param("titleCondition") String titleCondition);
 
 }

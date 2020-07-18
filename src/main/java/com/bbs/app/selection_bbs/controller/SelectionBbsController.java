@@ -1,6 +1,7 @@
 package com.bbs.app.selection_bbs.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,16 +34,9 @@ public class SelectionBbsController {
     @ResponseBody
     public String load() {
 
-		var list = new ArrayList<BbsForm>();
-		for(BbsEntity entity : bbsService.findAll()) {
-			var form = new BbsForm();
-			form.setId(entity.getId());
-			form.setTitle(entity.getTitle());
-			form.setCurrentNo(entity.getCurrentNo());
-			list.add(form);
-		}
+    	var formList = convertBbsEntityToForm(bbsService.findAll());
 
-	    String json = JsonUtil.convert(list);
+	    String json = JsonUtil.convert(formList);
 		System.out.println(json);
 
 	    return json;
@@ -50,12 +44,16 @@ public class SelectionBbsController {
 
     @PostMapping("/searchBbs")
     @ResponseBody
-    public String searchBbs(@RequestBody String json) {
+    public String searchBbs(@RequestBody String param) {
 
-    	var form = JsonUtil.parse(BbsSearchConditionForm.class, json);
+    	var form = JsonUtil.parse(BbsSearchConditionForm.class, param);
 
+    	var entityList = bbsService.findBbs(form.getTitleCondition());
+    	var formList = convertBbsEntityToForm(entityList);
+	    String json = JsonUtil.convert(formList);
+		System.out.println(json);
 
-    	return "";
+	    return json;
     }
 
     @GetMapping("/postPage")
@@ -65,5 +63,18 @@ public class SelectionBbsController {
     	mv.setViewName("postPage");
 
     	return mv;
+    }
+
+    private List<BbsForm> convertBbsEntityToForm(List<BbsEntity> entityList) {
+		var list = new ArrayList<BbsForm>();
+		for(BbsEntity entity : entityList) {
+			var form = new BbsForm();
+			form.setId(entity.getId());
+			form.setTitle(entity.getTitle());
+			form.setCurrentNo(entity.getCurrentNo());
+			list.add(form);
+		}
+
+		return list;
     }
 }
