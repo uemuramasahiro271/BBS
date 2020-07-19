@@ -72,6 +72,7 @@ public class SelectionBbsController {
 			form.setId(entity.getId());
 			form.setTitle(entity.getTitle());
 			form.setCurrentNo(entity.getCurrentNo());
+			form.setPostCount(entity.getContents().size());
 			list.add(form);
 		}
 

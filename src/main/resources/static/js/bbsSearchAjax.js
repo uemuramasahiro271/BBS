@@ -9,7 +9,7 @@ function createBbsList(dataArray) {
     for (let index = 0; index < dataArray.length; index++) {
         const data = dataArray[index];
         console.log(data);
-        addBbsItem(data.id, data.title);
+        addBbsItem(index + 1, data.id, data.title, data.postCount);
     }
 }
 
@@ -17,18 +17,22 @@ function clearBbsList() {
     $("#bbs_list").empty();
 }
 
-function addBbsItem(id, title) {
-    var $li = $("<li></li>", {
-
-    });
+function addBbsItem(no, id, title, postCount) {
+    var $li = $("<li></li>");
+    var $div = $("<div></div>");
     var $a = $("<a></a>", {
     	id: "bbs_item" + id,
-        text: title,
+        text: `${no}. ${title}`,
         href: "javascript:void(0);",
         onClick: `clickBbsItem(${id}, '${title}')`
     });
-
-    $li.append($a);
+    var $postCount = $("<span></span>", {
+        text: ` (${postCount}件)`
+    });
+    
+    $div.append($a);
+    $div.append($postCount);
+    $li.append($div);
     $("#bbs_list").append($li);
 }
 
@@ -39,7 +43,10 @@ function clickSearchBtn() {
     let json = JSON.stringify(data);
     ajaxPost("/searchBbs", json, function(data) { 
         clearBbsList();
-        createBbsList(data); 
+        createBbsList(data);
+
+        $("#searchResultCount_area").removeClass("collapse");
+        $("#searchResultCount_area p").text("検索結果：" + data.length + "件");
     });
 }
 

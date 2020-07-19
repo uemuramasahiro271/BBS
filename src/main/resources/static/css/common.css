@@ -8,6 +8,10 @@ button {
     height: 30px;
 }
 
+.collapse {
+    display: none;
+}
+
 .mouseover_style {
     font-size : 28px;
     background-color: aqua;

@@ -16,6 +16,14 @@ ul {
     padding: 10px 0;
 }
 
+#searchResultCount_area {
+    text-align: center;
+}
+
+#searchResultCount_area p {
+    margin: 0;
+}
+
 .area {
     text-align: center;
 }
