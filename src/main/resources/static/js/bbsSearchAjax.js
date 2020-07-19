@@ -57,3 +57,7 @@ function clickBbsItem(id, title) {
     window.sessionStorage.setItem(['bbs_title'],[title]);
     location.href = "/postPage";
 }
+
+function closebbsCreateModal() {
+    $(".bbs_create_btn").modaal('close');
+}

@@ -21,3 +21,12 @@ button {
     font-size : 14px;
     background-color: white;
 }
+
+.modal_window {
+    width: 60%;
+    margin: 0px auto;
+}
+
+.text_center {
+    text-align: center;
+}

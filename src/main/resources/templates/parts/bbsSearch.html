@@ -8,16 +8,56 @@
     <title>Document</title>
 </head>
 <body>
+    <div class="area">
+        <button class="bbs_create_btn">掲示板作成</button>
+        <button class="bbs_delete_btn">掲示板削除</button>
+    </div>
     <div id="search_area" class="area">
         掲示板検索
         <input id="input_text" type="text">
         <button id="search_btn" onclick="clickSearchBtn()">検索</button>
     </div>
     <div id="searchResultCount_area" class="collapse">
-        <p>aaaa</p>
+        <p></p>
     </div>
     <div id="bbs_area" class="area">
         <ul id="bbs_list"></ul>
     </div>
+
+    <!--  モーダルで表示する部分-->
+    <div id="modal_bbs_create" style="display:none;">
+        <div class="modal_window">
+            <div class="text_center">
+                <div>
+                    掲示板タイトルを入力してください。
+                </div>
+                <div>
+                    <textarea id="bbs_title_textarea"></textarea>
+                </div>
+                <button onclick="bbsCreateComplete()">完了</button>
+                <button onclick="closebbsCreateModal()">キャンセル</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(".bbs_create_btn").modaal({
+            content_source: '#modal_bbs_create',
+            width: 600, height: 250,
+            animation_speed: 150,
+            hide_close: true,
+            overlay_close: false,
+            outer_controls: true
+        });
+
+        $(".bbs_delete_btn").modaal({
+            content_source: '#modal_delete',
+            width: 600, height: 200,
+            animation_speed: 150,
+            hide_close: true,
+            overlay_close: false,
+            outer_controls: true
+        });
+    </script>
 </body>
 </html>
