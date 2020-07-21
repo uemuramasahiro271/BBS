@@ -56,6 +56,20 @@ public class SelectionBbsController {
 	    return json;
     }
 
+    @PostMapping("/createBbs")
+    @ResponseBody
+    public String createBbs(@RequestBody String param) {
+
+    	var form = JsonUtil.parse(BbsForm.class, param);
+    	var entity = bbsService.createBbs(form.getTitle());
+    	form = convertBbsEntityToForm(entity);
+
+	    String json = JsonUtil.convert(form);
+		System.out.println(json);
+
+	    return json;
+    }
+
     @GetMapping("/postPage")
     public ModelAndView postPage() {
 
@@ -68,14 +82,30 @@ public class SelectionBbsController {
     private List<BbsForm> convertBbsEntityToForm(List<BbsEntity> entityList) {
 		var list = new ArrayList<BbsForm>();
 		for(BbsEntity entity : entityList) {
-			var form = new BbsForm();
-			form.setId(entity.getId());
-			form.setTitle(entity.getTitle());
-			form.setCurrentNo(entity.getCurrentNo());
-			form.setPostCount(entity.getContents().size());
+			var form = convertBbsEntityToForm(entity);
 			list.add(form);
 		}
 
 		return list;
     }
+
+    private BbsForm convertBbsEntityToForm(BbsEntity entity) {
+		var form = new BbsForm();
+		form.setId(entity.getId());
+		form.setTitle(entity.getTitle());
+		form.setCurrentNo(entity.getCurrentNo());
+		form.setPostCount(entity.getContents().size());
+
+		return form;
+    }
+
+//    private BbsEntity convertBbsFormToEntity(BbsForm form) {
+//    	var entity = new BbsEntity();
+//    	entity.setId(form.getId());
+//    	entity.setTitle(form.getTitle());
+//    	entity.setCurrentNo(form.getCurrentNo());
+//
+//
+//    	return entity;
+//    }
 }

@@ -36,6 +36,20 @@ function addBbsItem(no, id, title, postCount) {
     $("#bbs_list").append($li);
 }
 
+function createBbs() {
+    var title = $("#bbs_title_textarea").val();
+    console.log(`createBbs() : title`);
+    var data = {title:title};
+    let json = JSON.stringify(data);
+    ajaxPost("/createBbs", json, function(data) { 
+        console.log(`data`);
+        var count = $("#bbs_list li").length + 1;
+        addBbsItem(count, data.id, data.title, data.postCount);
+        $("#bbs_title_textarea").val("");
+        closebbsCreateModal();
+    });
+}
+
 function clickSearchBtn() {
     console.log(`clickSearchBtn`);
     var titleCondition = $("#input_text").val();

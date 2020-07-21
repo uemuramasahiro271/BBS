@@ -49,6 +49,14 @@ public class BbsService {
 				.orElseGet(() -> 1);
 	}
 
+	public BbsEntity createBbs(String title) {
+		var entity = new BbsEntity();
+		entity.setTitle(title);
+		var result = bbsRepository.save(entity);
+
+		return result;
+	}
+
 	@Transactional
 	public void update(BbsEntity entity) {
 		bbsRepository.save(entity);

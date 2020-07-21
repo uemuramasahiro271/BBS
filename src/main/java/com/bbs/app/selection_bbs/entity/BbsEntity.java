@@ -1,6 +1,7 @@
 package com.bbs.app.selection_bbs.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -34,5 +35,5 @@ public class BbsEntity implements Serializable {
 	private int currentNo;
 
 	@OneToMany(mappedBy = "bbsEntity", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-	private List<ContentEntity> contents;
+	private List<ContentEntity> contents = new ArrayList<ContentEntity>();
 }
