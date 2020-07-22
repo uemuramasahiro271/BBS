@@ -33,23 +33,23 @@ aside {
     font-style: italic;
 }
 
-#page_top_btn{
-    width: 80px;
-    height: 60px;
+#page_top_btn {
+    width: 50px;
+    height: 50px;
     position: fixed;
     right: 0;
     bottom: 0;
-    background: #918c8e;
+    background: #3f98ef;
     opacity: 0.6;
-  }
-#page_top_btn a{
+}
+#page_top_btn a {
     position: relative;
     display: block;
-    width: 80px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     text-decoration: none;
 }
-#page_top_btn a::before{
+#page_top_btn a::before {
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
     content: '\f102';
@@ -58,19 +58,7 @@ aside {
     position: absolute;
     width: 25px;
     height: 25px;
-    top: -25px;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    margin: auto;
-    text-align: center;
-}
-#page_top_btn a::after{
-    content: 'TOP';
-    font-size: 13px;
-    color: #fff;
-    position: absolute;
-    top: 30px;
+    top: 0;
     bottom: 0;
     right: 0;
     left: 0;
