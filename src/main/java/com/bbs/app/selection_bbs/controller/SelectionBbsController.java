@@ -70,6 +70,17 @@ public class SelectionBbsController {
 	    return json;
     }
 
+    @GetMapping("/getBbsList")
+    public String getBbsList() {
+    	var list = bbsService.findAll();
+    	var formList = convertBbsEntityToForm(list);
+
+	    String json = JsonUtil.convert(formList);
+		System.out.println(json);
+
+	    return json;
+    }
+
     @GetMapping("/postPage")
     public ModelAndView postPage() {
 

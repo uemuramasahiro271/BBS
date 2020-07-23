@@ -75,3 +75,9 @@ function clickBbsItem(id, title) {
 function closebbsCreateModal() {
     $(".bbs_create_btn").modaal('close');
 }
+
+function setBbsTitleList() {
+    ajaxGet("/getBbsList", function(data) { 
+        
+     });
+}

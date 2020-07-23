@@ -40,6 +40,18 @@
         </div>
     </div>
 
+    <div id="modal_bbs_delete" style="display:none;">
+        <div class="modal_window">
+            <div class="text_center">
+                <div>
+                    掲示板タイトルを入力してください。
+                </div>
+                <button onclick="createBbs()">完了</button>
+                <button onclick="closebbsCreateModal()">キャンセル</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         $(".bbs_create_btn").modaal({
             content_source: '#modal_bbs_create',
@@ -56,7 +68,10 @@
             animation_speed: 150,
             hide_close: true,
             overlay_close: false,
-            outer_controls: true
+            outer_controls: true,
+            before_open: function() {
+                
+            }
         });
     </script>
 </body>
