@@ -1,0 +1,32 @@
+.item {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    background-color: whitesmoke;
+}
+
+.flexbox_item {
+    display: flex;
+}
+
+.variable_item {
+    flex: 1;
+}
+
+.button_area {
+    width: 100%;
+    text-align: right;
+}
+
+.text {
+    margin: 0;
+    word-break: break-all;
+}
+
+.border {
+    border: solid 1px gray;
+}
+
+.editBtn {
+    height: 24px;
+}

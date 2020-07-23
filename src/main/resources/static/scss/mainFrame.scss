@@ -1,0 +1,67 @@
+#body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+}
+
+aside {
+    width: 25%;
+    background-color: rgb(249, 231, 216);
+}
+
+#main_container {
+    display: flex;
+    flex: 1;
+}
+
+#main {
+    flex: 1;
+}
+
+#header {
+    margin-bottom: 68px;
+}
+
+#login_user_area {
+    text-align: center;
+    background-color: #fff;
+    margin: 10px 10px 0px 10px;
+    padding: 10px 0;
+    font-weight: bold;
+    font-style: italic;
+}
+
+#page_top_btn {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    background: #3f98ef;
+    opacity: 0.6;
+}
+#page_top_btn a {
+    position: relative;
+    display: block;
+    width: 50px;
+    height: 50px;
+    text-decoration: none;
+}
+#page_top_btn a::before {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    content: '\f102';
+    font-size: 25px;
+    color: #fff;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    text-align: center;
+}
