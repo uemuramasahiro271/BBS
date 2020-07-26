@@ -46,20 +46,4 @@ button {
   width: 60%;
   margin: 0px auto;
 }
-
-#bbs_list {
-  font-size: 20px;
-}
-
-#input_text {
-  margin-left: 5px;
-}
-
-#search_btn {
-  margin-left: 5px;
-}
-
-#search_area {
-  padding: 10px 0;
-}
-/*# sourceMappingURL=bbsSearch.css.map */
+/*# sourceMappingURL=appCommon.css.map */

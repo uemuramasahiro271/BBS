@@ -1,57 +1,98 @@
-main {
-    padding-top: 10px;
+.collapse {
+  display: none;
 }
 
-#form_area {
-    width: 50%;
-    margin: 0px auto;
+.horizontal_center {
+  text-align: center;
 }
 
-#form_area .border {
-    margin-top: 15px;
+.flexbox_item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
-#form_area textarea {
-    width: 350px;
-    height: 100px;
-    margin-top: 7px;
+body {
+  min-height: 100vh;
+  margin: 0;
 }
 
-#form_area button {
-    width: 100px;
-    height: 26px;
+p {
+  margin: 0;
 }
 
-#contents_area {
-    width: 50%;
-    margin: 0px auto;
+ul {
+  list-style: none;
+  padding-left: 0;
 }
 
-#contributor_input {
-    width: 250px;
+button {
+  width: 100px;
+  height: 30px;
 }
 
-.bulletin_board_title {
-    font-size: 20px;
-    font-weight: bold;
-    padding: 5px;
-    margin-bottom: 7px;
-    border-top: solid 1px gray;
-    border-bottom: solid 1px gray;
-    text-align: center;
+.mouseover_style {
+  font-size: 28px;
+  background-color: aqua;
+}
+
+.mouseleave_style {
+  font-size: 14px;
+  background-color: white;
 }
 
 .modal_window {
-    width: 60%;
-    margin: 0px auto;
+  width: 60%;
+  margin: 0px auto;
 }
 
-.modal_confirm {
-    text-align: center;
+main {
+  padding-top: 10px;
+}
+
+#form_area {
+  width: 50%;
+  margin: 0px auto;
+}
+
+#form_area .border {
+  margin-top: 15px;
+}
+
+#form_area textarea {
+  width: 350px;
+  height: 100px;
+  margin-top: 7px;
+}
+
+#form_area button {
+  width: 100px;
+  height: 26px;
+}
+
+#contents_area {
+  width: 50%;
+  margin: 0px auto;
+}
+
+#contributor_input {
+  width: 250px;
+}
+
+.bulletin_board_title {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 5px;
+  margin-bottom: 7px;
+  border-top: solid 1px gray;
+  border-bottom: solid 1px gray;
+  text-align: center;
 }
 
 .modal_window textarea {
-    width: 350px;
-    height: 100px;
-    margin-top: 7px;
+  width: 350px;
+  height: 100px;
+  margin-top: 7px;
 }
+/*# sourceMappingURL=main.css.map */
