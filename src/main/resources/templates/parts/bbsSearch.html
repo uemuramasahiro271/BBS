@@ -14,7 +14,7 @@
     <div id="search_area" class="horizontal_center">
         掲示板検索
         <input id="input_text" type="text">
-        <button id="search_btn" onclick="clickSearchBtn()">検索</button>
+        <button id="search_btn" onclick="clickSearchBtn()"><img src="/image/search_icon.png"></button>
     </div>
     <div id="searchResultCount_area" class="collapse horizontal_center">
         <p></p>
@@ -34,7 +34,7 @@
                     <textarea id="bbs_title_textarea"></textarea>
                 </div>
                 <button onclick="createBbs()">完了</button>
-                <button onclick="closebbsCreateModal()">キャンセル</button>
+                <button onclick="closeModal('.bbs_create_btn')">キャンセル</button>
             </div>
         </div>
     </div>
@@ -43,10 +43,13 @@
         <div class="modal_window">
             <div class="horizontal_center">
                 <div>
-                    掲示板タイトルを入力してください。
+                    削除する掲示板を選択してください。
                 </div>
-                <button onclick="createBbs()">完了</button>
-                <button onclick="closebbsCreateModal()">キャンセル</button>
+                <input type="checkbox" id="check_all" name="allChecked" onchange="">
+                <label for="check_all">全てチェックする</label>
+                <ul id="bbs_delete_list"></ul>
+                <button onclick="deleteBbs()">実行</button>
+                <button onclick="closeModal('.bbs_delete_btn')">キャンセル</button>
             </div>
         </div>
     </div>
@@ -62,15 +65,16 @@
         });
 
         $(".bbs_delete_btn").modaal({
-            content_source: '#modal_delete',
-            width: 600, height: 200,
+            content_source: '#modal_bbs_delete',
+            width: 600, 
             animation_speed: 150,
             hide_close: true,
             overlay_close: false,
             outer_controls: true,
             before_open: function() {
-
-            }
+                setBbsDeleteTitleList();
+                addEvent();
+            },
         });
     </script>
 </body>

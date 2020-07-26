@@ -6,3 +6,7 @@ function initView(onLoaded) {
     
     // $('#footer').load('parts/footer.html');
 }
+
+function closeModal(className) {
+    $(className).modaal('close');
+}

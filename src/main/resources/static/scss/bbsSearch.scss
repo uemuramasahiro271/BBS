@@ -10,6 +10,15 @@
 
 #search_btn {
     margin-left: 5px;
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    padding: 0;
+    border: none;
+}
+
+#search_btn img {
+    display: block;
 }
 
 #search_area {

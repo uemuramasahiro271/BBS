@@ -71,6 +71,7 @@ public class SelectionBbsController {
     }
 
     @GetMapping("/getBbsList")
+    @ResponseBody
     public String getBbsList() {
     	var list = bbsService.findAll();
     	var formList = convertBbsEntityToForm(list);
@@ -81,14 +82,34 @@ public class SelectionBbsController {
 	    return json;
     }
 
-    @GetMapping("/postPage")
-    public ModelAndView postPage() {
+    @PostMapping("/deleteBbs")
+    @ResponseBody
+    public String deleteBbs(@RequestBody String param) {
 
-    	var mv = new ModelAndView();
-    	mv.setViewName("postPage");
+    	//var jsonArray = new JSONArray(param);
 
-    	return mv;
+    	var list = JsonUtil.parse(BbsForm[].class, param);
+    	var idList = new ArrayList<Integer>();
+    	for(var form : list) {
+    		idList.add(form.getId());
+    	}
+
+    	var deleteList = bbsService.delete(idList);
+
+	    String json = JsonUtil.convert(deleteList);
+		System.out.println(json);
+
+	    return json;
     }
+
+//    @GetMapping("/postPage")
+//    public ModelAndView postPage() {
+//
+//    	var mv = new ModelAndView();
+//    	mv.setViewName("postPage");
+//
+//    	return mv;
+//    }
 
     private List<BbsForm> convertBbsEntityToForm(List<BbsEntity> entityList) {
 		var list = new ArrayList<BbsForm>();

@@ -68,4 +68,15 @@ public class BbsService {
 		entity.setCurrentNo(no);
 		bbsRepository.save(entity);
 	}
+
+	public List<BbsEntity> delete(List<Integer> ids) {
+		List<BbsEntity> deleteList = new ArrayList<BbsEntity>();
+		for(var id : ids) {
+			var bbsEntity = bbsRepository.findById(id).get();
+			deleteList.add(bbsEntity);
+		}
+		bbsRepository.deleteAll(deleteList);
+
+		return deleteList;
+	}
 }
