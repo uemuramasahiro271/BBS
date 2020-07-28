@@ -36,6 +36,9 @@ function createBbsItem(no, id, title, postCount) {
     $div.append($postCount);
     $li.append($div);
 
+    var list = $li[0];
+    list.setAttribute("data-id", id);
+
     return $li;
 }
 
@@ -130,6 +133,10 @@ function addEvent() {
     });
 }
 
+function clearBbsDeleteList() {
+    $("#bbs_delete_list").empty();
+}
+
 function deleteBbs() {
     var ids = new Array();
     $("input[name='chk[]']").each(function() {
@@ -142,8 +149,15 @@ function deleteBbs() {
     let json = JSON.stringify(ids);
     console.log(`json = ${json}`);
     ajaxPost("/deleteBbs", json, function(dataArray) { 
-
-
-        closeModal('.bbs_delete_btn');
+        for (let index = 0; index < dataArray.length; index++) {
+            const data = dataArray[index];
+            var $li = $(`#bbs_list li[data-id="${data.id}"]`);
+            console.log(`id = ${data.id}`);
+            console.log(`data属性 = ${$li[0].dataset.id}`);
+            if($li[0].dataset.id == data.id) {
+                $li.remove();
+            }
+        }
+        closeModal('.bbs_delete_btn')
     });
 }

@@ -75,6 +75,9 @@
                 setBbsDeleteTitleList();
                 addEvent();
             },
+            after_close: function() {
+                clearBbsDeleteList();
+            }
         });
     </script>
 </body>
