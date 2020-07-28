@@ -102,14 +102,14 @@ public class SelectionBbsController {
 	    return json;
     }
 
-//    @GetMapping("/postPage")
-//    public ModelAndView postPage() {
-//
-//    	var mv = new ModelAndView();
-//    	mv.setViewName("postPage");
-//
-//    	return mv;
-//    }
+    @GetMapping("/postPage")
+    public ModelAndView postPage() {
+
+    	var mv = new ModelAndView();
+    	mv.setViewName("postPage");
+
+    	return mv;
+    }
 
     private List<BbsForm> convertBbsEntityToForm(List<BbsEntity> entityList) {
 		var list = new ArrayList<BbsForm>();

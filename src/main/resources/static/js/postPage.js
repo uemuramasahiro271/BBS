@@ -17,9 +17,9 @@ class PostItemCreator {
         var date = this.date;
         var contributor = this.contributor;
         var text = this.text;
-        $("#contents_area").append(`<article id="${id}"></article>`);
+        var $article = $(`<article id="${id}"></article>`);
         console.log("create");
-        $(`#${id}`).load("parts/postItem.html", function() {
+        $article.load("parts/postItem.html", function() {
             console.log("postItem load");
             // 各IDを設定
             $('#v_item').attr('id', `item${no}`)
@@ -36,13 +36,25 @@ class PostItemCreator {
             $(`#contributor${no}`).text(`${contributor}`);
             $(`#text${no}`).text(`${text}`);
         });
+
+        return $article;
     }
 }
 
 function addPostItem(no, contributor, date, text) {
     console.log("addPostItem");
     var creator = new PostItemCreator(no, contributor, date, text);
-    creator.create();
+    var $item = creator.create();
+    $("#contents_area").append($item);
+}
+
+function addPostItems(dataArray) {
+    for (let index = 0; index < dataArray.length; index++) {
+        const data = dataArray[index];
+        var creator = new PostItemCreator(data.no, data.contributor, data.date, data.text);
+        var $item = creator.create();
+        $("#contents_area").append($item);
+    }
 }
 
 function post() {

@@ -11,13 +11,7 @@ function loadPostPage() {
 
 function loadSuccess(dataArray) {
     console.log("loadSuccess");
-    console.log("dataArray.length = " + dataArray.length);
-
-    for (let index = 0; index < dataArray.length; index++) {
-        const data = dataArray[index];
-        console.log(data);
-        addPostItem(data.no, data.contributor, data.date, data.text);
-    }
+    addPostItems(dataArray);
 }
 
 function setTitle(title) {
