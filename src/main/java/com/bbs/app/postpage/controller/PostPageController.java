@@ -1,7 +1,6 @@
 package com.bbs.app.postpage.controller;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +14,7 @@ import com.bbs.app.postpage.entity.ContentPk;
 import com.bbs.app.postpage.form.ContentForm;
 import com.bbs.app.postpage.service.PostPageService;
 import com.bbs.app.selection_bbs.service.BbsService;
+import com.bbs.common.DateUtil;
 import com.bbs.common.JsonUtil;
 
 @Controller
@@ -25,8 +25,6 @@ public class PostPageController {
 
 	@Autowired
 	private PostPageService postPageService;
-
-	private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
 	@PostMapping("/loadPostPage")
 	@ResponseBody
@@ -39,7 +37,7 @@ public class PostPageController {
 		var formList = contents.stream()
 				.collect(
 						() -> new ArrayList<ContentForm>(),
-						(list, entity) -> list.add(new ContentForm(entity.getContentPk().getBbsId(), entity.getContentPk().getNo(), entity.getContributor(), dateFormat.format(entity.getDate()), entity.getText())),
+						(list, entity) -> list.add(new ContentForm(entity.getContentPk().getBbsId(), entity.getContentPk().getNo(), entity.getContributor(), DateUtil.format(entity.getDate()), entity.getText())),
 						(list, forms) -> list.addAll(forms));
 
 	    String resultJson = JsonUtil.convert(formList);
@@ -63,7 +61,7 @@ public class PostPageController {
 		try {
 			entity.setContentPk(new ContentPk(id, no));
 			entity.setContributor(form.getContributor());
-			entity.setDate(dateFormat.parse(form.getDate()));
+			entity.setDate(DateUtil.parse(form.getDate()));
 			entity.setText(form.getText());
 			entity.setBbsEntity(bbsEntity);
 		} catch (ParseException e) {
@@ -108,7 +106,7 @@ public class PostPageController {
 		try {
 			entity.setContentPk(new ContentPk(id, no));
 			entity.setContributor(form.getContributor());
-			entity.setDate(dateFormat.parse(form.getDate()));
+			entity.setDate(DateUtil.parse(form.getDate()));
 			entity.setText(form.getText());
 			entity.setBbsEntity(bbsEntity);
 		} catch (ParseException e) {

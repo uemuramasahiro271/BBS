@@ -10,5 +10,6 @@ public class BbsForm implements Serializable {
 	private int id;
 	private String title;
 	private int currentNo;
+	private String updateTime;
 	private int postCount;
 }

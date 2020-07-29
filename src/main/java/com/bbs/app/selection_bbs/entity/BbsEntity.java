@@ -2,6 +2,7 @@ package com.bbs.app.selection_bbs.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -33,6 +34,9 @@ public class BbsEntity implements Serializable {
 
 	@Column(name = "current_no")
 	private int currentNo;
+
+	@Column(name = "update_time")
+	private Date updateTime;
 
 	@OneToMany(mappedBy = "bbsEntity", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 	private List<ContentEntity> contents = new ArrayList<ContentEntity>();

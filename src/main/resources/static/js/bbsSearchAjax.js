@@ -9,7 +9,7 @@ function createBbsList(dataArray) {
     for (let index = 0; index < dataArray.length; index++) {
         const data = dataArray[index];
         console.log(data);
-        var item = createBbsItem(index + 1, data.id, data.title, data.postCount);
+        var item = createBbsItem(index + 1, data.id, data.title, data.updateTime, data.postCount);
         elements = elements + item.prop("outerHTML");
     }
     $("#bbs_list").append(elements);
@@ -19,7 +19,7 @@ function clearBbsList() {
     $("#bbs_list").empty();
 }
 
-function createBbsItem(no, id, title, postCount) {
+function createBbsItem(no, id, title, updateTime, postCount) {
     var $li = $("<li></li>");
     var $div = $("<div></div>");
     var $a = $("<a></a>", {
@@ -28,11 +28,15 @@ function createBbsItem(no, id, title, postCount) {
         href: "javascript:void(0);",
         onClick: `clickBbsItem(${id}, '${title}')`
     });
+    var $updateTime = $("<span></span>", {
+        text: ` (更新日時：${updateTime})`
+    });
     var $postCount = $("<span></span>", {
         text: ` (${postCount}件)`
     });
     
     $div.append($a);
+    $div.append($updateTime);
     $div.append($postCount);
     $li.append($div);
 
@@ -42,8 +46,8 @@ function createBbsItem(no, id, title, postCount) {
     return $li;
 }
 
-function addBbsItem(no, id, title, postCount) {
-    var item = createBbsItem(no, id, title, postCount);
+function addBbsItem(no, id, title, updateTime, postCount) {
+    var item = createBbsItem(no, id, title, updateTime, postCount);
     $("#bbs_list").append(item);
 }
 
@@ -55,7 +59,7 @@ function createBbs() {
     ajaxPost("/createBbs", json, function(data) { 
         console.log(`data`);
         var count = $("#bbs_list li").length + 1;
-        addBbsItem(count, data.id, data.title, data.postCount);
+        addBbsItem(count, data.id, data.title, data.updateTime, data.postCount);
         $("#bbs_title_textarea").val("");
         closeModal('.bbs_create_btn')
     });

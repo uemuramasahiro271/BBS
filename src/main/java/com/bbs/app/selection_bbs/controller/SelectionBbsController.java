@@ -15,6 +15,7 @@ import com.bbs.app.selection_bbs.entity.BbsEntity;
 import com.bbs.app.selection_bbs.form.BbsForm;
 import com.bbs.app.selection_bbs.form.BbsSearchConditionForm;
 import com.bbs.app.selection_bbs.service.BbsService;
+import com.bbs.common.DateUtil;
 import com.bbs.common.JsonUtil;
 
 @Controller
@@ -86,8 +87,6 @@ public class SelectionBbsController {
     @ResponseBody
     public String deleteBbs(@RequestBody String param) {
 
-    	//var jsonArray = new JSONArray(param);
-
     	var list = JsonUtil.parse(BbsForm[].class, param);
     	var idList = new ArrayList<Integer>();
     	for(var form : list) {
@@ -126,18 +125,9 @@ public class SelectionBbsController {
 		form.setId(entity.getId());
 		form.setTitle(entity.getTitle());
 		form.setCurrentNo(entity.getCurrentNo());
+		form.setUpdateTime(DateUtil.format(entity.getUpdateTime()));
 		form.setPostCount(entity.getContents().size());
 
 		return form;
     }
-
-//    private BbsEntity convertBbsFormToEntity(BbsForm form) {
-//    	var entity = new BbsEntity();
-//    	entity.setId(form.getId());
-//    	entity.setTitle(form.getTitle());
-//    	entity.setCurrentNo(form.getCurrentNo());
-//
-//
-//    	return entity;
-//    }
 }
