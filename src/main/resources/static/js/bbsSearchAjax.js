@@ -1,3 +1,11 @@
+$(function() {
+    console.log("createBbsList");
+    $(document).on('click', '.titleButton', function(){
+        console.log('Button is clicked');
+        clickBbsItem(this.dataset.id, this.dataset.title);
+    });
+});
+
 function loadBbs() {
     ajaxGet("/loadBbs", function(data) { createBbsList(data); });
 }
@@ -20,25 +28,41 @@ function clearBbsList() {
 }
 
 function createBbsItem(no, id, title, updateTime, postCount) {
-    var $li = $("<li></li>");
-    var $div = $("<div></div>");
-    var $a = $("<a></a>", {
-    	id: "bbs_item" + id,
-        text: `${no}. ${title}`,
-        href: "javascript:void(0);",
-        onClick: `clickBbsItem(${id}, '${title}')`
-    });
-    var $updateTime = $("<span></span>", {
-        text: ` (更新日時：${updateTime})`
-    });
-    var $postCount = $("<span></span>", {
-        text: ` (${postCount}件)`
-    });
+    // var $li = $("<li></li>");
+    // var $div = $("<div></div>");
+    // var $a = $("<a></a>", {
+    // 	id: "bbs_item" + id,
+    //     text: `${no}. ${title}`,
+    //     href: "javascript:void(0);",
+    //     onClick: `clickBbsItem(${id}, '${title}')`
+    // });
+    // var $updateTime = $("<span></span>", {
+    //     text: ` (更新日時：${updateTime})`
+    // });
+    // var $postCount = $("<span></span>", {
+    //     text: ` (${postCount}件)`
+    // });
     
-    $div.append($a);
-    $div.append($updateTime);
-    $div.append($postCount);
-    $li.append($div);
+    // $div.append($a);
+    // $div.append($updateTime);
+    // $div.append($postCount);
+    // $li.append($div);
+
+    var $li = $("<li></li>");
+    var $button = $("<button class='titleButton'></button>", {
+        id: "bbs_item" + id,
+    });
+    $button[0].setAttribute("data-id", id);
+    $button[0].setAttribute("data-title", title);
+
+    var $div1 = $("<div class='title'></div>");
+    $div1.text(`${no} ${title}`);
+    var $div2 = $("<div class='update_time'></div>");
+    $div2.text(`更新日時：${updateTime} (${postCount}件)`);
+    
+    $button.append($div1);
+    $button.append($div2);
+    $li.append($button);
 
     var list = $li[0];
     list.setAttribute("data-id", id);

@@ -1,12 +1,12 @@
 header {
     position: fixed;
     width: 100%;
+    text-align: center;
+    background-color: sandybrown;
+    background: linear-gradient(to bottom, sandybrown, rgb(236, 212, 191));
 }
 
 header h1 {
     margin: 0;
     padding: 10px 0;
-    text-align: center;
-    background-color: sandybrown;
-    background: linear-gradient(to bottom, sandybrown, rgb(236, 212, 191));
 }

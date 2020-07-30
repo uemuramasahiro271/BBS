@@ -120,5 +120,4 @@ public class PostPageController {
 
 		return resultJson;
 	}
-
 }

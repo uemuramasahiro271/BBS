@@ -1,14 +1,14 @@
 header {
   position: fixed;
   width: 100%;
-}
-
-header h1 {
-  margin: 0;
-  padding: 10px 0;
   text-align: center;
   background-color: sandybrown;
   background: -webkit-gradient(linear, left top, left bottom, from(sandybrown), to(#ecd4bf));
   background: -webkit-linear-gradient(top, sandybrown, #ecd4bf);
   background: linear-gradient(to bottom, sandybrown, #ecd4bf);
+}
+
+header h1 {
+  margin: 0;
+  padding: 10px 0;
 }
