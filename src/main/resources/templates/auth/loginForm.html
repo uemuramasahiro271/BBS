@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/login.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.bundle.js"></script>
+    <title>ログインフォーム</title>
+</head>
+<body cz-shortcut-listen="true">
+    <div class="page-header text-center">
+        <h1 class="mt-3">ログインフォーム</h1>
+    </div>
+    <div class="container">
+        <div class="card card-container">
+            <p id="profile-name" class="profile-name-card"></p>
+            <form id="loginForm" name="loginForm" class="form-signin mb10" data-th-action="@{/login}" data-th-method="post">
+                <input type="text" id="username" name="username" class="form-control mb10" placeholder="ユーザー名" required="" autofocus="">
+                <input type="password" id="password" name="password" class="form-control mb10" placeholder="パスワード" required="">
+                <button class="btn btn-lg btn-primary btn-block mb10" type="submit">ログイン</button>
+			</form>
+			<form method="get" id="newRegistrationForm" name="newRegistrationForm" data-th-action="@{/accountRegister}">
+				<a href="javascript:newRegistrationForm.submit()">新規登録</a>
+			</form>
+        </div>
+    </div>
+</body>
+</html>
