@@ -27,6 +27,10 @@ ul {
   padding-left: 0;
 }
 
+ol {
+  margin: 0;
+}
+
 .defaultButton {
   width: 100px;
   height: 30px;
