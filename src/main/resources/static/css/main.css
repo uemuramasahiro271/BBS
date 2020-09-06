@@ -27,6 +27,10 @@ ul {
   padding-left: 0;
 }
 
+ol {
+  margin: 0;
+}
+
 .defaultButton {
   width: 100px;
   height: 30px;
@@ -45,10 +49,6 @@ ul {
 .modal_window {
   width: 60%;
   margin: 0px auto;
-}
-
-main {
-  padding-top: 10px;
 }
 
 #form_area {
