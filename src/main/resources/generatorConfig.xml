@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <classPathEntry
+        location="C:\Users\Umasahiro\Java\pleiades\workspace\BBS\src\main\resources\lib\mysql-connector-java-5.1.44.jar" />
+    <context id="context1" targetRuntime="MyBatis3">
+
+<!--     JDBCの設定です (1) -->
+        <jdbcConnection
+            driverClass="com.mysql.jdbc.Driver"
+            connectionURL="jdbc:mysql://localhost:3306/bbs?serverTimezone=JST"
+            userId="root"
+            password="um53635363"
+        />
+
+<!--     自動生成するエンティティの設定です (2) -->
+        <javaModelGenerator targetPackage="com.bbs.app.entity" targetProject="BBS/src/main/java/">
+            <property name="enableSubPackages" value="true" />
+      		<property name="trimStrings" value="true" />
+        </javaModelGenerator>
+        <sqlMapGenerator targetPackage="com.bbs.app.mapper" targetProject="BBS/src/main/resources/">
+			<property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+        <javaClientGenerator targetPackage="com.bbs.app.mapper" targetProject="BBS/src/main/java/" type="XMLMAPPER">
+			<property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+<!--     生成対象のテーブルです（3) -->
+<!--         <table schema="bbs" tableName=bbs>
+        	<property name="useActualColumnNames" value="false" />
+        </table> -->
+        <table schema="bbs" tableName="contents">
+        	<property name="useActualColumnNames" value="false" />
+        </table>
+        <table schema="bbs" tableName="user_account">
+        	<property name="useActualColumnNames" value="false" />
+        </table>
+    </context>
+</generatorConfiguration>
